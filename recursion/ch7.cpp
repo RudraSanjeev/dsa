@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+// T(C) = 2^t * k { t is bcoz we are not checking only n times but also sometimes i is not increases or sometimes it increases so let say it is t }
+// k --> is for inserting a value k times inside a ds to reach target.
+// S(C) = k *x {hypothetical bcoz it depends no of combination generated. here x is no of combination generated}
 void combinationSum(int i, int target, vector<int> &ds, int arr[], int n, vector<vector<int>> &res)
 {
     if (target == 0)

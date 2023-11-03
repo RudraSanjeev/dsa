@@ -1,33 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// subset sum I
-
-void subsetSum(int i, vector<int> &arr, int n, int sum, vector<int> &ds)
+// subset sum - given arr, and n
+// problem link: https://practice.geeksforgeeks.org/problems/subset-sums2234/1
+void subsetSum(int i, vector<int> arr, vector<int> &ds, int n, int sum)
 {
-    if (i == n)
+    if (i >= n)
     {
         ds.push_back(sum);
         return;
     }
-    ds.push_back(arr[i]);
     sum += arr[i];
-
-    subsetSum(i + 1, arr, n, sum, ds);
+    subsetSum(i + 1, arr, ds, n, sum);
     sum -= arr[i];
-    ds.pop_back();
-    subsetSum(i + 1, arr, n, sum, ds);
+    subsetSum(i + 1, arr, ds, n, sum);
 }
 
 int main()
 {
     vector<int> arr = {3, 1, 2};
     vector<int> ds;
-    int n = arr.size();
-    subsetSum(0, arr, n, 0, ds);
+    subsetSum(0, arr, ds, 3, 0);
 
-    sort(ds.begin(), ds.end());
-
+    // print
     for (auto x : ds)
     {
         cout << x << " ";
